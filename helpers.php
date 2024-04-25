@@ -11,3 +11,36 @@ function basePath($path = "") {
     // __DIR__ return the absolute path of the file folder
     return __DIR__ . "/" . $path;
 }
+
+
+/**
+ *   LOAD THE VIEW
+ *   @param string $name
+ *   @return void
+ */
+function loadView($name) {
+
+   $viewPath = basePath("views/{$name}.view.php");
+
+   if (file_exists($viewPath)) {
+       require $viewPath;
+   } else {
+        echo "View '{$name} not found!'";
+   }
+}
+
+/**
+ *   LOAD A PARTIAL
+ *   @param string $name
+ *   @return void
+ */
+function loadPartial($name) {
+    $partialsPath = basePath("views/partials/{$name}.php");
+    
+    if (file_exists($partialsPath)) {
+        require $partialsPath;
+    }
+    else {
+         echo "Partials '{$name} not found!'";
+    }
+}
