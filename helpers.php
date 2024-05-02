@@ -54,14 +54,18 @@ function loadPartial($name) {
  */
 
  function inspect($value) {
+    echo "--------------------------------";
     echo "<pre>";
     var_dump($value);
     echo "</pre>";
+    echo "--------------------------------";
  }
 
 function inspectAndDie($value) {
+    echo "--------------------------------";
     echo "<pre>";
     var_dump($value);
     echo "</pre>";
     die();
+    echo "--------------------------------";
 }
