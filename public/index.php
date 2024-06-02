@@ -10,7 +10,7 @@
     $routes = require basePath("routes.php");
     
     // GET current URI AND HTTP METHOD
-    $uri = $_SERVER["REQUEST_URI"];
+    $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
     $method = $_SERVER["REQUEST_METHOD"];
   
     //ROUTE THE REQUEST
