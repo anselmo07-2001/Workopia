@@ -19,8 +19,9 @@
     
     // GET current URI AND HTTP METHOD
     $uri = parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH);
-    $method = $_SERVER["REQUEST_METHOD"];
-  
+
+    // inspect($uri);
+ 
     //ROUTE THE REQUEST
-    $router->route($uri, $method);
+    $router->route($uri);
 ?>
