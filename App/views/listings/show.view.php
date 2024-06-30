@@ -25,7 +25,7 @@
           </p>
           <ul class="my-4 bg-gray-100 p-4">
             <li class="mb-2"><strong>Salary:</strong>
-             <?= formatSalary($listing->description) ?>
+             <?= formatSalary($listing->salary) ?>
             </li>
             <li class="mb-2">
               <strong>Location:</strong> 
@@ -35,10 +35,12 @@
                 class="text-xs bg-blue-500 text-white rounded-full px-2 py-1 ml-2"
                 >Local</span -->
             </li>
-            <li class="mb-2">
-              <strong>Tags:</strong> 
-               <?= $listing->tags ?>
-            </li>
+            <?php if (!empty($listing->tags)): ?>
+                    <li class="mb-2">
+                      <strong>Tags:</strong> 
+                      <?= $listing->tags ?>
+                    </li>
+            <?php endif; ?>
           </ul>
         </div>
       </div>
