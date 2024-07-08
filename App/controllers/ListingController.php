@@ -140,4 +140,35 @@ class ListingController {
 
         redirect("/listings");
     }
+
+
+    /**
+     *   Show the listing edit form
+     *   
+     *    @param array $params
+     *    @return void 
+     */
+
+    public function edit($params) {
+        $id = $params["id"] ?? "";
+
+        $params = [
+            "id" => $id
+        ];
+
+        $listing = $this->db->query("SELECT * FROM listings WHERE id = :id", $params)->fetch();
+
+        //check if listings exists
+        if (!$listing) {
+            ErrorController::notFound("Listings not found");
+            return;
+        }
+
+        loadView("listings/edit", [
+            "listing" => $listing
+        ]);
+    }
+   
+
+
 }
