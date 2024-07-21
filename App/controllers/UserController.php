@@ -61,7 +61,7 @@ class UserController {
         }
 
         if(!Validation::match($password, $passwordConfirmation)) {
-            $errors["password_confirmation"] = "Password must be between 6 and 50 characters";
+            $errors["password_confirmation"] = "Password must match";
         }
 
         if (!empty($errors)) {
@@ -75,8 +75,36 @@ class UserController {
                 ]
             ]);
             exit;
-        }else {
-            inspectAndDie("Store");
         }
+
+        // Check if email exists
+        $params = [
+            "email" => $email
+        ];
+
+        $user = $this->db->query("SELECT * FROM users WHERE email = :email", $params)->fetch(); 
+
+
+        if ($user) {
+            $errors["email"] = "That email already exists";
+            loadView("users/create", [
+                "errors" => $errors
+            ]);
+            exit;
+        }
+
+
+        // Create user account
+        $params = [
+            "name" => $name,
+            "email" => $email,
+            "city" => $city,
+            "state" => $state,
+            "password" => password_hash($password, PASSWORD_DEFAULT)
+        ];
+
+        $this->db->query("INSERT INTO users (name, email, password, city, state) VALUES (:name, :email, :password, :city, :state)", $params);
+
+        redirect("/");
     }
 }
