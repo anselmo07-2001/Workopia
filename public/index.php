@@ -1,10 +1,12 @@
-<?php
-    session_start();
-    
+<?php     
     require __DIR__ . "/../vendor/autoload.php";
-    require "../helpers.php";
-
+    
     use Framework\Router;
+    use Framework\Session;
+
+    Session::start();
+
+    require "../helpers.php";
 
     // Instatiating the router
     $router = new Router();    
