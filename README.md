@@ -1,0 +1,1 @@
+I’ve rebuilt Workopia from the ground up—welcome to v2! This version is cleaner and easier to maintain: I reorganized the entire codebase around a Container + Repository architecture while keeping manual routing for full control and simplicity. Take it for a spin at https://workopia.riveraanselmo.com/.
